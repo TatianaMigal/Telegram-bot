@@ -215,28 +215,6 @@ poem9 = """
 Вручал России свой народ.
 """.strip().split("\n")
 
-# Три пальмы
-poem10 = """
-В песчаных степях аравийской земли
-Три гордые пальмы высоко росли.
-Родник между ними из почвы бесплодной,
-Журча, пробивался волною холодной,
-Хранимый, под сенью зеленых листов,
-От знойных лучей и летучих песков.
-И многие годы неслышно прошли;
-Но странник усталый из чуждой земли
-Пылающей грудью ко влаге студеной
-Еще не склонялся под кущей зеленой,
-И стали уж сохнуть от знойных лучей
-Роскошные листья и звучный ручей.
-И стали три пальмы на бога роптать:
-«На то ль мы родились, чтоб здесь увядать?
-Без пользы в пустыне росли и цвели мы,
-Колеблемы вихрем и зноем палимы,
-Ничей благосклонный не радуя взор?..
-Не прав твой, о небо, святой приговор!»
-""".strip().split("\n")
-
 LAST_READ = "last_read"
 
 WAIT_FOR_NEXT_STRING, WAIT_REPEAT_ALL, ENABLE_SUPHLER = 1, 2, 3
@@ -250,8 +228,7 @@ reply_keyboard = [['/a1poem'],
                   ['/a6poem'],
                   ['/a7poem'],
                   ['/a8poem'],
-                  ['/a9poem'],
-                  ['/a10poem']]
+                  ['/a9poem']]
 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
 
 def start(update, context):
@@ -261,7 +238,7 @@ def start(update, context):
                                  /a3poem: Смерть поэта, /a4poem: Тучи
                                  /a5poem: Родина, /a6poem: Утес
                                  /a7poem: Кавказ, /a8poem: Беглец
-                                 /a9poem: Мцыри, /a10poem: Три пальмы""", reply_markup=markup)
+                                 /a9poem: Мцыри""", reply_markup=markup)
     update.message.reply_text(poem[0])
     context.user_data[LAST_READ] = 0
     return WAIT_FOR_NEXT_STRING
@@ -311,11 +288,6 @@ def a8poem:
 # Мцыри
 def a9poem:
         user_data[READING_POEM] = poem9
-
-
-# Три пальмы
-def a10poem:
-        user_data[READING_POEM] = poem10
 
 
 def continue_or_repeat(update, user_data, next_string_index):
